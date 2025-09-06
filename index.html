@@ -1,5 +1,19 @@
 import { useState } from 'react';
 
+const logoSvg = (
+  <svg viewBox="0 0 100 100" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M50 0 C77.614 0 100 22.386 100 50 C100 77.614 77.614 100 50 100 C22.386 100 0 77.614 0 50 C0 22.386 22.386 0 50 0 Z" fill="#15284B" />
+    <path d="M50 8 C73.743 8 92 26.257 92 50 C92 73.743 73.743 92 50 92 C26.257 92 8 73.743 8 50 C8 26.257 26.257 8 50 8 Z" fill="white" />
+    <path d="M41.875 32.25 C41.875 33.725 41.288 35.138 40.231 36.194 L29.625 46.806 C28.569 47.862 27.156 48.45 25.681 48.45 C24.206 48.45 22.794 47.862 21.738 46.806 L11.131 36.194 C10.075 35.138 9.488 33.725 9.488 32.25 C9.488 30.775 10.075 29.362 11.131 28.306 L21.738 17.694 C22.794 16.638 24.206 16.05 25.681 16.05 C27.156 16.05 28.569 16.638 29.625 17.694 L40.231 28.306 C41.288 29.362 41.875 30.775 41.875 32.25 Z" fill="#15284B" />
+    <path d="M50 43.125 C50 41.65 50.588 40.238 51.644 39.181 L62.25 28.569 C63.306 27.513 64.719 26.925 66.194 26.925 C67.669 26.925 69.081 27.513 70.138 28.569 L80.744 39.181 C81.8 40.238 82.388 41.65 82.388 43.125 C82.388 44.6 81.8 46.013 80.744 47.069 L70.138 57.681 C69.081 58.738 67.669 59.325 66.194 59.325 C64.719 59.325 63.306 58.738 62.25 57.681 L51.644 47.069 C50.588 46.013 50 44.6 50 43.125 Z" fill="#15284B" />
+    <path d="M25.681 51.131 L25.681 51.131 C24.206 51.131 22.794 51.719 21.738 52.775 L11.131 63.388 C10.075 64.444 9.488 65.856 9.488 67.331 C9.488 68.806 10.075 70.219 11.131 71.275 L21.738 81.888 C22.794 82.944 24.206 83.531 25.681 83.531 C27.156 83.531 28.569 82.944 29.625 81.888 L40.231 71.275 C41.288 70.219 41.875 68.806 41.875 67.331 C41.875 65.856 41.288 64.444 40.231 63.388 L29.625 52.775 C28.569 51.719 27.156 51.131 25.681 51.131 Z" fill="#15284B" />
+    <path d="M66.194 62.219 C64.719 62.219 63.306 62.806 62.25 63.862 L51.644 74.475 C50.588 75.531 50 76.944 50 78.419 C50 79.894 50.588 81.306 51.644 82.362 L62.25 92.975 C63.306 94.031 64.719 94.619 66.194 94.619 C67.669 94.619 69.081 94.031 70.138 92.975 L80.744 82.362 C81.8 81.306 82.388 79.894 82.388 78.419 C82.388 76.944 81.8 75.531 80.744 74.475 L70.138 63.862 C69.081 62.806 67.669 62.219 66.194 62.219 Z" fill="#15284B" />
+    <path d="M50 51.131 L50 51.131 C48.525 51.131 47.112 51.719 46.056 52.775 L35.45 63.388 C34.394 64.444 33.806 65.856 33.806 67.331 C33.806 68.806 34.394 70.219 35.45 71.275 L46.056 81.888 C47.112 82.944 48.525 83.531 50 83.531 C51.475 83.531 52.888 82.944 53.944 81.888 L64.55 71.275 C65.606 70.219 66.194 68.806 66.194 67.331 C66.194 65.856 65.606 64.444 64.55 63.388 L53.944 52.775 C52.888 51.719 51.475 51.131 50 51.131 Z" fill="#15284B" />
+    <path d="M25.681 16.05 C27.156 16.05 28.569 16.638 29.625 17.694 L40.231 28.306 C41.288 29.362 41.875 30.775 41.875 32.25 C41.875 33.725 41.288 35.138 40.231 36.194 L29.625 46.806 C28.569 47.862 27.156 48.45 25.681 48.45 C24.206 48.45 22.794 47.862 21.738 46.806 L11.131 36.194 C10.075 35.138 9.488 33.725 9.488 32.25 C9.488 30.775 10.075 29.362 11.131 28.306 L21.738 17.694 C22.794 16.638 24.206 16.05 25.681 16.05 Z" fill="white" />
+    <path d="M66.194 26.925 C67.669 26.925 69.081 27.513 70.138 28.569 L80.744 39.181 C81.8 40.238 82.388 41.65 82.388 43.125 C82.388 44.6 81.8 46.013 80.744 47.069 L70.138 57.681 C69.081 58.738 67.669 59.325 66.194 59.325 C64.719 59.325 63.306 58.738 62.25 57.681 L51.644 47.069 C50.588 46.013 50 44.6 50 43.125 C50 41.65 50.588 40.238 51.644 39.181 L62.25 28.569 C63.306 27.513 64.719 26.925 66.194 26.925 Z" fill="white" />
+  </svg>
+);
+
 const factores = [
   {
     id: 1,
@@ -480,13 +494,7 @@ const App = () => {
   
   // Define los colores de la universidad
   const cesPrimaryColor = '#15284B'; // Azul oscuro
-
-  const logoSvg = (
-    <svg viewBox="0 0 100 100" width="100" height="100">
-      <image href="https://www.ces.edu.co/content/themes/theme-ces/dist/images/Universidad-CES.svg" width="100" height="100"/>
-    </svg>
-  );
-
+  
   // Función para determinar el color de la calificación
   const getRatingColor = (rating) => {
     if (rating >= 4.5) return 'text-green-600';
@@ -494,14 +502,12 @@ const App = () => {
     return 'text-red-600';
   };
   
-  // Función para manejar el clic en un factor
   const handleFactorClick = (factor) => {
     setSelectedFactor(factor);
     setActiveFactorId(factor.id);
     setSelectedSubTitleIndex(null);
   };
 
-  // Estilos de Tailwind CSS para la interfaz
   const cardClasses = "bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden";
   const headerClasses = `p-4 text-center border-b border-gray-200 dark:border-gray-700 bg-[${cesPrimaryColor}] text-white`;
   const buttonClasses = (isActive) =>
@@ -575,6 +581,54 @@ const App = () => {
                 )}
               </div>
             ))}
+          </div>
+        </div>
+      </div>
+    );
+  };
+  
+  return (
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white p-4 sm:p-8 font-sans">
+      <header className="mb-8 text-center">
+        <img src="https://www.ces.edu.co/content/themes/theme-ces/dist/images/Universidad-CES.svg" alt="Universidad CES Logo" className="mx-auto h-16 sm:h-20 mb-4" />
+        <h1 className="text-4xl sm:text-5xl font-extrabold text-[#15284B] dark:text-white tracking-tight font-serif">
+          Universidad CES
+        </h1>
+        <p className="mt-2 text-xl sm:text-2xl font-semibold text-gray-700 dark:text-gray-300">
+          Maestría en Administración en Salud
+        </p>
+      </header>
+
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 h-full min-h-[80vh]">
+        <div className={`${cardClasses} md:col-span-1 h-full flex flex-col`}>
+          <div className={`${headerClasses} sticky top-0 bg-[${cesPrimaryColor}] z-10`}>
+            <h1 className="text-xl font-bold text-white font-serif">Factores de Autoevaluación</h1>
+            <p className="text-sm text-gray-100 mt-1">Maestría en Administración en Salud</p>
+          </div>
+          <div className="p-4 space-y-2 flex-1 overflow-y-auto">
+            {factores.map((factor) => (
+              <button
+                key={factor.id}
+                onClick={() => handleFactorClick(factor)}
+                className={buttonClasses(activeFactorId === factor.id)}
+              >
+                <div className="flex items-center gap-2">
+                  <span className="w-6 h-6 flex items-center justify-center text-gray-500">
+                    {factor.icon}
+                  </span>
+                  <span className="text-left">{factor.title}</span>
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className={`${cardClasses} md:col-span-2 h-full flex flex-col`}>
+          <div className={`${headerClasses} sticky top-0 bg-[${cesPrimaryColor}] z-10`}>
+            <h2 className="text-xl font-bold text-white font-serif">Detalles del Factor</h2>
+          </div>
+          <div className="flex-1 overflow-y-auto p-4 sm:p-6">
+            {renderContent()}
           </div>
         </div>
       </div>
