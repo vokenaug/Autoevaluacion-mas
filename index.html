@@ -1,9 +1,5 @@
 import { useState } from 'react';
 
-// URL del logotipo de la universidad
-const logoUrl = "https://www.ces.edu.co/content/themes/theme-ces/dist/images/Universidad-CES.svg";
-
-// Datos de los factores del informe de autoevaluación
 const factores = [
   {
     id: 1,
@@ -484,7 +480,13 @@ const App = () => {
   
   // Define los colores de la universidad
   const cesPrimaryColor = '#15284B'; // Azul oscuro
-  
+
+  const logoSvg = (
+    <svg viewBox="0 0 100 100" width="100" height="100">
+      <image href="https://www.ces.edu.co/content/themes/theme-ces/dist/images/Universidad-CES.svg" width="100" height="100"/>
+    </svg>
+  );
+
   // Función para determinar el color de la calificación
   const getRatingColor = (rating) => {
     if (rating >= 4.5) return 'text-green-600';
@@ -501,7 +503,7 @@ const App = () => {
 
   // Estilos de Tailwind CSS para la interfaz
   const cardClasses = "bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden";
-  const headerClasses = "p-4 text-center border-b border-gray-200 dark:border-gray-700";
+  const headerClasses = `p-4 text-center border-b border-gray-200 dark:border-gray-700 bg-[${cesPrimaryColor}] text-white`;
   const buttonClasses = (isActive) =>
     `w-full text-left p-4 rounded-md font-medium transition-colors duration-200 flex items-center gap-4 ${
       isActive ? 'bg-blue-800 text-white shadow-md' : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
@@ -573,57 +575,6 @@ const App = () => {
                 )}
               </div>
             ))}
-          </div>
-        </div>
-      </div>
-    );
-  };
-  
-  return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white p-4 sm:p-8 font-sans">
-      {/* Encabezado del programa y la universidad */}
-      <header className="mb-8 text-center">
-        <img src={logoUrl} alt="Universidad CES Logo" className="mx-auto h-16 sm:h-20 mb-4" />
-        <h1 className="text-4xl sm:text-5xl font-extrabold text-blue-800 dark:text-white tracking-tight">
-          Universidad CES
-        </h1>
-        <p className="mt-2 text-xl sm:text-2xl font-semibold text-gray-700 dark:text-gray-300">
-          Maestría en Administración en Salud
-        </p>
-      </header>
-
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 h-full min-h-[80vh]">
-        {/* Panel de Navegación (Factores) */}
-        <div className={`${cardClasses} md:col-span-1 h-full flex flex-col`}>
-          <div className={`${headerClasses} sticky top-0 bg-white dark:bg-gray-800 z-10`}>
-            <h1 className="text-xl font-bold text-blue-800 dark:text-white">Factores de Autoevaluación</h1>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Maestría en Administración en Salud</p>
-          </div>
-          <div className="p-4 space-y-2 flex-1 overflow-y-auto">
-            {factores.map((factor) => (
-              <button
-                key={factor.id}
-                onClick={() => handleFactorClick(factor)}
-                className={buttonClasses(activeFactorId === factor.id)}
-              >
-                <div className="flex items-center gap-2">
-                  <span className="w-6 h-6 flex items-center justify-center text-white-500">
-                    {factor.icon}
-                  </span>
-                  <span className="text-left">{factor.title}</span>
-                </div>
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Panel de Contenido Dinámico (Detalles del Factor) */}
-        <div className={`${cardClasses} md:col-span-2 h-full flex flex-col`}>
-          <div className={`${headerClasses} sticky top-0 bg-white dark:bg-gray-800 z-10`}>
-            <h2 className="text-xl font-bold text-blue-800 dark:text-white">Detalles del Factor</h2>
-          </div>
-          <div className="flex-1 overflow-y-auto p-4 sm:p-6">
-            {renderContent()}
           </div>
         </div>
       </div>
